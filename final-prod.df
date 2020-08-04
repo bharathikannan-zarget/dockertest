@@ -1,0 +1,42 @@
+FROM gradle:6.5.1-jdk8
+## We are using Jdk8. This is a comment
+LABEL maintainer="bk@freshworks.com"
+
+#Setting env variable
+ENV profile="production"
+ENV WORKDIR="/fmserver"
+
+ARG BUILD_ID=unknown
+ARG BUILD_DATE=unknown
+ARG VCS_REF=unknown
+
+LABEL org.label-schema.build-date="${BUILD_DATE}"
+LABEL org.label-schema.description="This software is owned by Freshmarketer."
+LABEL org.label-schema.vcs-ref="${VCS_REF}"
+LABEL org.label-schema.version="${BUILD_ID}"
+
+#It is always recommended to copy the Dockerfile, which is used to image for debugging.
+COPY final-prod.df /Dockerfile
+
+#Creating our workdir
+RUN mkdir -p ${WORKDIR}
+
+#Setting work directory
+WORKDIR ${WORKDIR}
+
+COPY build/libs/dockertest-0.0.1-SNAPSHOT.jar ${WORKDIR}/app.jar
+
+HEALTHCHECK --interval=1m --timeout=3s \
+	CMD curl -XGET localhost:8080/health/ || exit 1
+
+#setting logging directory
+VOLUME ${PWD}/logs:/logs
+
+#Exposing port 8080
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "/fmserver/app.jar"]
+
+
+
+

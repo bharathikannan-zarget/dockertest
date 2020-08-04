@@ -1,0 +1,5 @@
+2020-08-05 02:29:15.481  INFO 61942 --- [Test worker] c.f.d.DockertestApplicationTests         : Starting DockertestApplicationTests on FDLDL0301.freshworks-corp.com with PID 61942 (started by bkannan in /Users/bkannan/Desktop/dockertest)
+2020-08-05 02:29:15.482  INFO 61942 --- [Test worker] c.f.d.DockertestApplicationTests         : No active profile set, falling back to default profiles: default
+2020-08-05 02:29:16.309  INFO 61942 --- [Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-05 02:29:16.551  INFO 61942 --- [Test worker] c.f.d.DockertestApplicationTests         : Started DockertestApplicationTests in 1.297 seconds (JVM running for 2.207)
+2020-08-05 02:29:16.771  INFO 61942 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
